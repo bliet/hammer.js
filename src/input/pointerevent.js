@@ -16,7 +16,8 @@ const POINTER_INPUT_MAP = {
   pointermove: INPUT_MOVE,
   pointerup: INPUT_END,
   pointercancel: INPUT_CANCEL,
-  pointerout: INPUT_CANCEL
+  pointerout: INPUT_CANCEL,
+  pointerleave: INPUT_CANCEL
 };
 
 // in IE10 the pointer types is defined as an enum
@@ -27,12 +28,12 @@ const IE10_POINTER_TYPE_ENUM = {
   5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
 };
 
-let POINTER_ELEMENT_EVENTS = 'pointerdown';
+let POINTER_ELEMENT_EVENTS = 'pointerdown pointerleave';
 let POINTER_WINDOW_EVENTS = 'pointermove pointerup pointercancel';
 
 // IE10 has prefixed support, and case-sensitive
 if (window.MSPointerEvent && !window.PointerEvent) {
-  POINTER_ELEMENT_EVENTS = 'MSPointerDown';
+  POINTER_ELEMENT_EVENTS = 'MSPointerDown MSPointerLeave';
   POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerUp MSPointerCancel';
 }
 
